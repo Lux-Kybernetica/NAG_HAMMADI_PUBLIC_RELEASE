@@ -1,0 +1,39 @@
+name: Import public Nag Hammadi corpus
+
+on:
+  push:
+    paths:
+      - '.github/workflows/import-public-corpus.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  import-corpus:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download packaged corpus
+        run: |
+          curl -L --fail --retry 3 'https://sdmntprcentralus.oaiusercontent.com/files/00000000-7248-81f5-b826-94ba9d737316/raw?se=2026-09-01T13%3A56%3A31Z&sp=r&sv=2026-02-06&sr=b&scid=ba4a7f9a-1c16-5818-a42a-8aa8e6599639&skoid=002823aa-689d-47ca-9347-108c20f4f00d&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-01T08%3A35%3A03Z&ske=2026-09-02T08%3A35%3A03Z&sks=b&skv=2026-02-06&sig=oSblhpQCo6gFvNtv7wOfZ0GJth6VHLzf%2BVKNslQlJxw%3D' -o /tmp/artifact.zip
+
+      - name: Extract 45 French translations
+        run: |
+          rm -rf /tmp/nh_outer /tmp/nh_inner
+          mkdir -p /tmp/nh_outer /tmp/nh_inner
+          unzip -q /tmp/artifact.zip -d /tmp/nh_outer
+          unzip -q /tmp/nh_outer/NAG_HAMMADI_LIBRARY_FR_2026.zip -d /tmp/nh_inner
+          mkdir -p translations
+          cp /tmp/nh_inner/NAG_HAMMADI_LIBRARY_FR_2026/translations/*_FR_LK.md translations/
+          count=$(find translations -maxdepth 1 -type f -name '*_FR_LK.md' | wc -l)
+          echo "French translation files: $count"
+          test "$count" -eq 45
+
+      - name: Publish corpus files
+        run: |
+          git config user.name 'Lux Kybernetica Release Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add translations/
+          git commit -m 'release: publish 45 French Nag Hammadi translations'
+          git push

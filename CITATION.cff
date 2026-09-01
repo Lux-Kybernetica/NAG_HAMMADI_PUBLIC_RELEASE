@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "Si vous utilisez ce corpus, merci de citer Lux Kybernetica."
+title: "Nag Hammadi Library — Corpus français de recherche"
+type: dataset
+authors:
+  - name: "Lux Kybernetica"
+version: "0.1.0"
+date-released: "2026-09-01"
+license: "other"
+abstract: >-
+  Corpus français de recherche de 45 œuvres distinctes de Nag Hammadi,
+  comprenant 6 670 segments alignés et une provenance documentaire.
+keywords:
+  - Nag Hammadi
+  - gnosticism
+  - Coptic
+  - digital humanities
+  - French translation
+  - corpus
+  - RAG

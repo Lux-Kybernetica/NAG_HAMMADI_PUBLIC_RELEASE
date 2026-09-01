@@ -1,0 +1,16 @@
+{
+  "project": "Nag Hammadi Library — Corpus français de recherche",
+  "publisher": "Lux Kybernetica",
+  "version": "0.1.0",
+  "date": "2026-09-01",
+  "works": 45,
+  "aligned_segments": 6670,
+  "structural_closure": "PASS",
+  "structural_errors": 0,
+  "unadjudicated_structural_warnings": 0,
+  "documented_waived_warnings": 19,
+  "translation_basis": "documented English intermediary translations",
+  "direct_coptic_critical_translation": false,
+  "semantic_review": "ongoing",
+  "philological_adjudication": "ongoing"
+}

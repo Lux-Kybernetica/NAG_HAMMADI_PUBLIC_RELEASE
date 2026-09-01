@@ -1,0 +1,52 @@
+name: Correction de traduction
+description: Signaler un problème de traduction ou de portée éditoriale
+title: "[TRAD] "
+labels:
+  - translation
+body:
+  - type: input
+    id: work
+    attributes:
+      label: Œuvre / témoin
+      placeholder: "NHC II,5 — On the Origin of the World"
+    validations:
+      required: true
+
+  - type: input
+    id: target
+    attributes:
+      label: TARGET-ID
+      placeholder: "NHC-II-5::FR-LK::P0001"
+    validations:
+      required: true
+
+  - type: textarea
+    id: source
+    attributes:
+      label: Texte anglais concerné
+    validations:
+      required: true
+
+  - type: textarea
+    id: french
+    attributes:
+      label: Français actuel
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue
+    attributes:
+      label: Problème identifié
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Correction proposée
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sources / justification philologique
