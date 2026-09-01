@@ -37,3 +37,5 @@ jobs:
           git add translations/
           git commit -m 'release: publish 45 French Nag Hammadi translations'
           git push
+
+# trigger: 2026-09-01 public release
